@@ -37,7 +37,7 @@ public class Sigdata
 //    public float Roll;
 //    public Date SampleDate;
     public int ID;
-    public Date Timestamp;
+    public String Timestamp;
     public float Latitude;
     public float Longitude;
     public String Type;

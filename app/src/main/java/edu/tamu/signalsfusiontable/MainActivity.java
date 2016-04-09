@@ -50,9 +50,9 @@ import java.util.Date;
 
 
 public class MainActivity extends AppCompatActivity {
-    private static String CLIENT_ID = "111028778634-t2notn4npb8e4u7uvat95tej9l1559ti.apps.googleusercontent.com";
+    private static String CLIENT_ID = "111028778634-l7c7jrs18aihje5pm3fh8ccvc9910oao.apps.googleusercontent.com";
     //Use your own client id
-    private static String CLIENT_SECRET ="QL8-4PAdwMNFnjKZeNl-nSOl";
+    private static String CLIENT_SECRET ="G-mz8w74RgTO1RnfvUwRLDVY";
     //Use your own client secret
     private static String REDIRECT_URI="http://localhost";
     private static String GRANT_TYPE="authorization_code";
@@ -289,10 +289,10 @@ public class MainActivity extends AppCompatActivity {
 
                 Sigdata testmember = new Sigdata();                               // Create test RF data
                 testmember.ID = 1;
-                testmember.Timestamp = new Date();
+                testmember.Timestamp = "2000";
                 testmember.Latitude = (float)newpos.Latitude;
                 testmember.Longitude = (float)newpos.Longitude;
-                testmember.Type = "WiFi";
+                testmember.Type = "1213";
                 testmember.Strength = -120;
 
                 System.out.println("Add data...");
@@ -414,18 +414,17 @@ public class MainActivity extends AppCompatActivity {
                 sql_string += "Timestamp,";                          // Field: intDeviceID
                 sql_string += "Location,";                              // Field: fltRSSI
                 sql_string += "Type,";                          // Field: fltLatitude
-                sql_string += "Strength,";                         // Field: fltLongitude
-                sql_string += "SampleDate) ";                       // Field: dtSampleDate
+                sql_string += "Strength)";                         // Field: fltLongitude
                 sql_string += "VALUES (";                           // Values indetifier
                 sql_string += signal.ID + ",";                // Value: XbeeID
                 sql_string += signal.Timestamp + ",";              // Value: DeviceID
-                sql_string += signal.Latitude + ",";                  // Value: RSSI
+//                sql_string += signal.Latitude + ",";                  // Value: RSSI
                 sql_string += signal.Longitude + ",";              // Value: Latitude
                 sql_string += signal.Type + ",";             // Value: Longitude
-                sql_string += signal.Strength + ",";                   // Value: Yaw
-                sql_string += "'" + ft.format(signal.Timestamp) + "')";
+                sql_string += signal.Strength + ")";                   // Value: Yaw
                 Sql sql = FusionTables.query().sql(sql_string);     // Build Fusion Query
                 // Try and execute the SQL command
+                System.out.println(sql);
                 try                                                 //
                 {                                                   //
                     sql.executeAndDownloadTo(System.out);           // Execute command, stream to the system.out
